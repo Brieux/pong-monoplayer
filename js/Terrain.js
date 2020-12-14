@@ -42,8 +42,10 @@ class Terrain {
      * permet de stoper la partie
      */
     defaite(){
+        $("#terrain").addClass('opaque');
+        $("#rejouer").removeClass('invisible');
+        $(".resultat").text(raquetteGauche.point);
         balle.arreteDeBouger();
-
     }
 
 }
