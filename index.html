@@ -9,25 +9,40 @@
 
 <!-- affichage de l'ecran titre -->
 <div id="titre">
-    <p>Joueur 1</p>
-    <p> Jouer avec l'aide des touches</p>
-    <div>
-        <div id="A">A</div> et <div id="Q">Q</div>
-    </div>
+        Utilisez les touches <br><br>
+        <span class="touche">A</span>
+    et
+    <span class="touche">Q</span>
+    <br>
+    <p>Tu disposes de 5 vies</p>
+    <span class="vie"></span>
+    <span class="vie"></span>
+    <span class="vie"></span>
+    <span class="vie"></span>
+    <span class="vie"></span>
+    <br><br>
+    <a href="#" class="btn">Jouez</a>
 </div>
 
 <!-- affichage du terrain -->
-<div id="terrain">
+<div id="terrain" class="opaque">
     <!-- affichage des score -->
-    <div id="Sdroite" class="score">0</div>
-    <div id="Sgauche" class="score">0</div>
+    <div class="affScore"> Score : <div class="score">0</div> </div>
+    <div class="affVie"> Vie : <div class="compteur">5</div> </div>
     <!-- affichage de la balle -->
-    <div id="balle">
+    <div id="balle" >
     </div>
+    <!-- Affichage des deux raquettes-->
     <!-- Affichage des deux raquettes-->
     <div id="droite" class="raquette">
     </div>
     <div id="gauche" class="raquette">
     </div>
+
 </div>
+</body>
+<script src="js/Terrain.js"></script>
+<script src="js/Raquette.js"></script>
+<script src="js/Balle.js"></script>
+<script src="js/pong.js"></script>
 </html>

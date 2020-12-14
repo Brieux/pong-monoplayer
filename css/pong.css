@@ -1,0 +1,150 @@
+@import url(https://fonts.googleapis.com/css?family=Caveat);
+body {
+    /** couleurs & font **/
+    background: #ffffff;
+    color: #ee5de6;
+    font-family: caveat;
+    font-size: 20px;
+    /** centrer les elements **/
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#titre{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 50px;
+    z-index: 1;
+}
+
+.touche{
+    color: #ee5de6;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ee5de6;
+    border-radius: 4px;
+    user-select:none;
+}
+
+.touche.top{
+    top:-15px;
+}
+.touche.left{
+    left:-40px;
+}
+.touche.bottom{
+    bottom:-15px;
+}
+.touche.right{
+    right: -40px;
+}
+
+#titre .touche{
+    display: inline-flex;
+    transform: rotate(0deg) !important;
+}
+
+.invisible{
+    opacity: 0;
+}
+
+.opaque{
+    opacity: 0.1;
+}
+
+.vie {
+    height: 25px;
+    width: 25px;
+    background-color: #ee5de6;
+    border-radius: 50%;
+    display: inline-block;
+}
+.btn{
+    background:linear-gradient(to bottom, #58267b 5%, #c043ee 100%);
+    background-color: #ee5de6;
+    border-radius:15px;
+    border:2px solid #333029;
+    display:inline-block;
+    cursor:pointer;
+    color:white;
+    font-size:22px;
+    padding:12px 16px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px black;
+}
+.affScore {
+    position:absolute ;
+}
+
+.affVie {
+    position: absolute;
+    right:1%;
+}
+
+#terrain{
+    /** Bordeure et terrain de jeu **/
+    position:relative ;
+    border: 1px solid #ee5de6;
+    border-left-color: #ee5de6 ;
+    border-right-color: #ee5de6 ;
+    width: 800px;
+    height: 400px;
+}
+
+.fluo{
+    /** Zone pour le changement de couleur lors des hits**/
+
+    border-top-color: #0f0 !important;
+    border-bottom-color: #0f0 !important;
+}
+
+.point{
+    /** Zone pour le changement de couleur lors des points**/
+
+    border-top-color: rgb(255, 0, 0) !important;
+    border-bottom-color: rgb(255, 0, 0) !important;
+}
+
+#balle{
+    /** CSS relatif a la balle **/
+    position: absolute;
+    top: 50%;
+    left:50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ee5de6;
+    border-radius:100%;
+}
+
+.raquette{
+    /** CSS relatif la classe raquette**/
+    position: absolute;
+    --hauteur: 25%;
+    top: calc(50% - var(--hauteur)/2);
+    width: 10px;
+    height: var(--hauteur);
+    background-color:#ee5de6;
+}
+
+.raquetteFluo{
+    background-color: rgb(0, 255, 0) !important;
+}
+#gauche{
+    /**Precision pour la raquette d'id droite**/
+    left:1%;
+}
+
+#droite{
+    /**Precision pour la raquette d'id gauche**/
+    right: 1%;
+}
