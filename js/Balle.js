@@ -19,6 +19,11 @@ class Balle {
         this.centreY = this.positionY
 
     }
+
+    /**
+     * getter
+     * @returns {number}
+     */
     get bas() {
         return this.positionY + this.rayon;
     }
@@ -36,10 +41,18 @@ class Balle {
     set droite(value) {
         this.positionX = value - this.rayon;
     }
+
+    /**
+     * permet de faire partir la balle aléatoirement
+     * @returns {number}
+     */
     calculAleatoire(){
         return Math.random() < 0.5 ? 1 : -1; //c'est un genre de if : else
     }
 
+    /**
+     * permet de recentrer la balle apres un but
+     */
     retourCentre(){
         this.positionX =  this.centreX;
         this.positionY =  this.centreY;
@@ -48,6 +61,10 @@ class Balle {
         this.vitesseYSens = (Math.random()*6) - 3;
         this.vitesseYFacteur =1;
     }
+
+    /**
+     * accelère la balle petit a petit
+     */
     calculVitesseX(){
         //rajout de 1 facteur
         if (this.vitesseXFacteur < this.limiteFacteur){
@@ -55,6 +72,11 @@ class Balle {
         }
         else {/*rien car la vitesse ne peux pas depasser la limite*/}
     }
+
+    /**
+     * balle evoluant dans un terrain
+     * @param terrain
+     */
     bouger(terrain){
         this.positionX = this.positionX + (this.vitesseXFacteur * this.vitesseXSens);
         this.positionY += (this.vitesseYFacteur * this.vitesseYSens);
@@ -63,17 +85,26 @@ class Balle {
         this.rebondSurRaquette(raquetteGauche);
         this.majHTML();
     }
+
+    /**
+     * mise a jour graphique
+     */
     majHTML(){
         this.$element.css("left",this.positionX);
         this.$element.css("top",this.positionY);
     }
 
+    /**
+     * gere les rebonds avec le terrain
+     * @param terrain
+     */
     rebond(terrain){
         //impact avec un bords de terrain coté joueur
         if(this.positionX <= 0 ||this.droite >= terrain.largeur){
             if(this.positionX <= 0)
-
+                raquetteGauche.perdre();
             if(this.droite >= terrain.largeur){
+                raquetteGauche.perdre();
             }
             //retour de la balle au centre et affichage des bords rouges;
             terrain.$element.addClass("point");
@@ -90,6 +121,11 @@ class Balle {
         }
 
     }
+
+    /**
+     * gere les rebonds avec les raquettes
+     * @param raquette
+     */
     rebondSurRaquette(raquette){
         //zone pour la raquette de gauche
         if(raquette.gauche){
@@ -108,6 +144,7 @@ class Balle {
                     );
                     this.calculVitesseX();
                     this.vitesseYSens = raquette.calculRebond(this.positionY);
+                    raquetteGauche.ajoutScore()
                 }
             }
         }
@@ -128,9 +165,21 @@ class Balle {
                     );
                     this.calculVitesseX();
                     this.vitesseYSens = raquette.calculRebond(this.positionY);
+                    raquetteGauche.ajoutScore()
                 }
             }
         }
 
+    }
+
+    /**
+     * arrete la balle de bouger
+     */
+    arreteDeBouger() {
+        while (raquetteGauche.vie < 0) {
+            balle.retourCentre();
+            this.vitesseXFacteur = 0;
+            this.vitesseYFacteur = 0;
+        }
     }
 }

@@ -9,14 +9,19 @@ class Terrain {
         this.hauteur = $element.height();
     }
 
+    /**
+     * ecoute les entrées touche du joueurs
+     * @param raquetteGauche
+     * @param raquetteDroite
+     */
     jouer(raquetteGauche, raquetteDroite){
         window.addEventListener("keydown", function (event) {
             if (event.defaultPrevented) { return}
-            if(event.key === "a"){
+            if(event.key === "h"){
                 raquetteGauche.monter();
                 raquetteDroite.descendre();
             }
-            else if (event.key === "q"){
+            else if (event.key === "b"){
                 raquetteGauche.descendre();
                 raquetteDroite.monter();
             }
@@ -25,11 +30,20 @@ class Terrain {
 
         window.addEventListener("keyup", function (event) {
             if (event.defaultPrevented) { return}
-            if(event.key === "a" || event.key === "q"){
+            if(event.key === "h" || event.key === "b"){
                 raquetteGauche.arreterDeBouger();
                 raquetteDroite.arreterDeBouger();
             }
             event.preventDefault();
         }, true);
     }
+
+    /**
+     * permet de stoper la partie
+     */
+    defaite(){
+        balle.arreteDeBouger();
+
+    }
+
 }
